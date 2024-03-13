@@ -57,6 +57,11 @@
             margin: 10px;
             flex-grow: 1;
             flex-basis: calc(33.33% - 20px); /* This sets the initial size of the items to approximately one third of the container width, minus the margin */
+            object-fit: contain; /* This maintains the aspect ratio of the elements */
+        }
+        video, img {
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
