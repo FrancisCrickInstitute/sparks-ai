@@ -44,18 +44,23 @@
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
 
-  <style>
-      .container {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-around;
-      }
-      .item {
-          max-width: 100%;
-          height: auto;
-          margin: 10px;
-      }
-  </style>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row; /* This is the default value, but just to be sure */
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%; /* Make sure the container takes up the full width of its parent */
+        }
+        .item {
+            max-width: 100%;
+            height: auto;
+            margin: 10px;
+            flex-grow: 1; /* This allows the items to grow and fill the available space */
+            flex-basis: 0; /* This sets the initial size of the items before they grow */
+        }
+    </style>
+
 </head>
 <body>
 
