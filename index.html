@@ -84,6 +84,8 @@
               <!-- Paper authors -->
               <span class="author-block">
                 <a href="https://scholar.google.com/citations?user=KB0fO_MAAAAJ&hl=en" target="_blank">Nicolas Skatchkovsky</a><sup>1</sup>,</span>
+              <span class="author-block">
+                  Natalia Glazman<sup>2</sup>,</span>
                 <span class="author-block">
                   <a href="https://www.imperial.ac.uk/people/s.sadeh" target="_blank">Sadra Sadeh</a><sup>1, 2, *</sup>,</span>
                   <span class="author-block">
@@ -167,9 +169,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
-          <p>
-            Two-dimensional embeddings obtained during the supervised prediction of the position of the animal’s hand for monkeys performing a centre-out task (Chowdury et al., 2020). Single session comprising 65 neurons recorded from Brodmann's 2 area of the somatosensory cortex.
-          </p>
+          <p>Two-dimensional embeddings obtained during the supervised prediction of the position of the animal’s hand for monkeys performing a centre-out task (Chowdury et al., 2020).</p>
         </div>
       </div>
     </div>
@@ -185,7 +185,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Advances in experimental neuroscience are increasing the capacity to record neuronal activity with higher spatial and temporal resolutions. Predominantly due to its very high dimensionality, interpreting this data in relation to relevant parameters is challenging. A promising approach to address this problem is to focus on meaningful low-dimensional representations of neural data. Recent advances in machine learning (ML) have provided valuable tools to extract such representations. However, existing techniques still often overlook the sequential structure of neural activity, which is crucial for information processing in the brain. To address this limitation, we propose a novel self-attention mechanism that sequentially extracts information from the precise timing of single spikes by incorporating the biological principle of Hebbian learning. The approach involves training a variational autoencoder encompassing the proposed rule using an information-theoretic criterion inspired by predictive coding to enforce temporal coherence in the latent representations. The resulting model is a Sequential Predictive Autoencoder for the Representation of spiKing Signals (SPARKS). It offers a versatile approach, supporting both unsupervised but also supervised learning using e.g. behavioural data to guide the production of relevant latent representations. The embeddings produced are directly interpretable and highly robust across animals and sessions with only tens of neurons recorded when training the model via supervised learning. When training via unsupervised learning, they allow to freely explore the different behavioural or cognitive parameters encoded in the neural data. Finally, the model offers state-of-the-art prediction capabilities on diverse datasets recorded both via electrophysiology and calcium imaging. Overall, combining ML models with biologically inspired mechanisms, SPARKS provides a promising solution for extracting meaningful information from neural data.
+            Understanding how the brain represents sensory information and triggers behavioural responses is a fundamental goal in neuroscience. Despite advances in neuronal recording techniques, linking the resulting high dimensional responses to relevant variables remains challenging. Inspired by recent progress in machine learning, we propose a novel self-attention mechanism that generates reliable latent representations by sequentially extracting information from the precise timing of single spikes through Hebbian learning. We train a variational autoencoder encompassing the proposed attention layer using an information-theoretic criterion inspired by predictive coding to enforce temporal coherence in the latent representations. The resulting model, SPARKS, produces interpretable embeddings from just tens of neurons, demonstrating robustness across animals and sessions. Through unsupervised and supervised learning, SPARKS generates meaningful low-dimensional representations of high-dimensional recordings and offers state-of-the-art prediction capabilities for behavioural variables on diverse electrophysiology and calcium imaging datasets. Notably, we capture oscillatory sequences from the medial entorhinal cortex (MEC) at unprecedented precision, compare latent representation of natural scenes across sessions and animals, and reveal the hierarchical organisation of the mouse visual cortex from simple datasets. Combining machine learning models with biologically inspired mechanisms, SPARKS provides a promising solution for revealing large-scale network dynamics. Its capacity to generalize across animals and behavioural states suggests SPARKS potential to estimate the animal’s latent generative model of the world.
           </p>
         </div>
       </div>
@@ -195,34 +195,55 @@
 <!-- End paper abstract -->
 
 
-<!-- Image carousel -->
+
+
+<div class="row">
+
+    <div class="col-md-6 mb-2">
+        <video width="100%" autoplay loop muted preload="auto">
+            <source src="static/videos/mec_encs.mp4" type="video/mp4">
+            Video file not supported in this web browser.
+        </video>
+            <p>Two-dimensional embeddings obtained from unsupervised learning of calcium recordings in the medial entorhinal cortex (MEC) of passive mice (Gonzalo Cogno et al., 2024). Without prior pre-processing, SPARKS unveils a ring topology from the recording and allows us to obtain the phase of the underlying oscillation in the signal.</p>
+    </div>
+
+    <div class="col-md-6 mb-2">
+            <video width="100%" autoplay loop muted preload="auto">
+                <source src="static/videos/mec_encs.mp4" type="video/mp4">
+                Video file not supported in this web browser.
+            </video>
+            <p>Two-dimensional embeddings obtained from unsupervised learning of calcium recordings in the medial entorhinal cortex (MEC) of passive mice (Gonzalo Cogno et al., 2024). Without prior pre-processing, SPARKS unveils a ring topology from the recording and allows us to obtain the phase of the underlying oscillation in the signal.</p>
+
+    </div>
+
+</div>
+
+
+
+<!-- 
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
-        <!-- Your image here -->
         <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
           First image description.
         </h2>
       </div>
       <div class="item">
-        <!-- Your image here -->
         <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
           Second image description.
         </h2>
       </div>
       <div class="item">
-        <!-- Your image here -->
         <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
          Third image description.
        </h2>
      </div>
      <div class="item">
-      <!-- Your image here -->
       <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
         Fourth image description.
@@ -231,8 +252,7 @@
   </div>
 </div>
 </div>
-</section>
-<!-- End image carousel -->
+ -->
 
 
 
