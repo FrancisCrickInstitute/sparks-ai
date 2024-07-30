@@ -213,6 +213,14 @@
   </div>
 </div>
 
+<section class="section" id="Overview">
+<h2 class="title">Overview</h2>
+<div class="container" style="margin-bottom: 20px;">
+<img width="80%" src="static/images/sparks-overview.png" alt="Image description">
+</div>
+
+ To obtain consistent latent embeddings that capture most of the variance from high dimensional neuronal responses, we have developed a Sequential Predictive Autoencoder for the Representation of Spiking Signals (SPARKS), combining a variational autoencoder with the proposed Hebbian attention layer and predictive learning rule (see details below). The encoder comprises several attention blocks, each composed of an attention layer, followed by a fully connected feedforward network with residual connections and batch normalisation. The first attention block implements our Hebbian self-attention mechanism, with the following blocks implementing conventional dot-product attention. The decoder is a fully connected feedforward neural network, tasked to reconstruct either the input signal to perform unsupervised learning, or to predict a desired reference signal for supervised learning. 
+</section>
 
 <!-- 
 <section class="hero is-small">
