@@ -197,14 +197,14 @@
 
 
 <div class="container">
-  <div style="display: inline-block; width: 45%; margin-bottom: 100px;">
+  <div style="display: inline-block; width: 45%; margin-bottom: 150px;">
     <video width="100%" autoplay loop muted preload="auto">
       <source src="static/videos/mec_encs.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <figcaption>Two-dimensional embeddings obtained from unsupervised learning of calcium recordings in the medial entorhinal cortex (MEC) of passive mice (Gonzalo Cogno et al., 2024). Without prior pre-processing, SPARKS unveils a ring topology from the recording and allows us to obtain the phase of the underlying oscillation in the signal.</figcaption>
   </div>
-  <div style="display: inline-block; width: 45%; margin-bottom: 100px;">
+  <div style="display: inline-block; width: 45%; margin-bottom: 150px;">
     <video width="100%" autoplay loop muted preload="auto">
       <source src="static/videos/mec_encs.mp4" type="video/mp4">
       Your browser does not support the video tag.
@@ -212,6 +212,13 @@
     <figcaption>Two-dimensional embeddings obtained from unsupervised learning of calcium recordings in the medial entorhinal cortex (MEC) of passive mice (Gonzalo Cogno et al., 2024). Without prior pre-processing, SPARKS unveils a ring topology from the recording and allows us to obtain the phase of the underlying oscillation in the signal.</figcaption>
   </div>
 </div>
+
+
+<section class="section" id="Overview">
+<img class="item" src="static/images/sparks-overview.svg" alt="Image description">
+
+ To obtain consistent latent embeddings that capture most of the variance from high dimensional neuronal responses, we have developed a Sequential Predictive Autoencoder for the Representation of Spiking Signals (SPARKS), combining a variational autoencoder with the proposed Hebbian attention layer and predictive learning rule (see details below). The encoder comprises several attention blocks, each composed of an attention layer, followed by a fully connected feedforward network with residual connections and batch normalisation. The first attention block implements our Hebbian self-attention mechanism, with the following blocks implementing conventional dot-product attention. The decoder is a fully connected feedforward neural network, tasked to reconstruct either the input signal to perform unsupervised learning, or to predict a desired reference signal for supervised learning. 
+</section>
 
 <!-- 
 <section class="hero is-small">
