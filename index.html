@@ -173,7 +173,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
-          <p>Two-dimensional embeddings obtained during the supervised prediction of the position of the animal’s hand for monkeys performing a centre-out task (Chowdury et al., 2020).</p>
+          <p>Two-dimensional embeddings obtained during the supervised prediction of the position of the hand of monkeys performing a centre-out task (Chowdury et al., 2020).</p>
         </div>
       </div>
     </div>
@@ -216,7 +216,7 @@
 <img width="80%" src="static/images/encoder.png" alt="Image description">
 </div>
 
-At the heart of SPARKS is the Hebbian attention layer, a biologically motivated adaptation of the conventional attention mechanism used in Transformers. This layer allows the model to focus on significant parts of the neural input data, mimicking the way biological systems prioritize certain signals. The attention mechanism's design is grounded in the principles of sparse distributed memory, aligning closely with how biological neural networks might operate.
+At the heart of SPARKS is the Hebbian attention layer, a biologically motivated adaptation of the conventional attention mechanism used in Transformers. This layer allows the model to focus on significant parts of the neural input data, mimicking the way biological systems prioritize certain signals.
 </section>
 
 <section class="section" id="Learning">
@@ -241,115 +241,15 @@ SPARKS utilizes a variational approach to optimize the encoder and decoder netwo
   </div>
   <div style="display: inline-block; width: 45%; margin-bottom: 150px;">
     <video width="100%" autoplay loop muted preload="auto">
-      <source src="static/videos/mec_encs.mp4" type="video/mp4">
+      <source src="static/videos/allen_visual.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <figcaption>Two-dimensional embeddings obtained from unsupervised learning of calcium recordings in the medial entorhinal cortex (MEC) of passive mice (Gonzalo Cogno et al., 2024). Without prior pre-processing, SPARKS unveils a ring topology from the recording and allows us to obtain the phase of the underlying oscillation in the signal.</figcaption>
+    <figcaption>Reconstruction of a natural movie shown to passive mice from 100 neurons in the primary visual cortex recorded with a Neuropixels probe (de Vries et al., 2020).</figcaption>
   </div>
 </div>
 
 SPARKS has been successfully applied to decode neural signals and predict sensory inputs, such as visual stimuli, with high accuracy. It demonstrates the potential to uncover the temporal dynamics of neural signals across different brain regions, offering valuable insights into brain function. Additionally, the model's ability to handle unsupervised and supervised learning tasks makes it versatile for various neuroscience research applications.
 </section>
-
-
-<!-- 
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
- -->
-
-
-
-
-<!-- 
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
- video -->
-
-
-<!-- 
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
- carousel -->
-
-
-<!-- 
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-      </div>
-    </div>
-  </section>
- poster -->
 
 
 <!--BibTex citation -->
