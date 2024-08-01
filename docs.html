@@ -48,12 +48,11 @@
 </head>
 
 <body>
-
     <div class="navbar clear nav-top">
         <div class="row content">
             <a class="right" style="text-decoration: underline;" href="https://github.com/franciscrickinstitute/sparks"><i class="fa-brands fa-github"></i></i>&nbsp; GitHub</a>
             <a class="right" style="text-decoration: underline;" href="https://franciscrickinstitute.github.io/sparks-ai/"><i class="fas fa-book"></i>&nbsp; Main page</a>
-            <a class="right" href="mailto:nicolas.skatchkovsky[at]crick[dot]ac[dot]uk[dot]com" target="_blank"><i class="fas fa-paper-plane"></i>&nbsp; nicolas.skatchkovsky[at]crick[dot]ac[dot]uk[dot]com</a>
+            <a class="right" href="mailto:nicolas.skatchkovsky[at]crick[dot]ac[dot]uk" target="_blank"><i class="fas fa-paper-plane"></i>&nbsp; nicolas.skatchkovsky[at]crick[dot]ac[dot]uk</a>
         </div>
     </div>
 
@@ -188,7 +187,8 @@ $ conda activate sparks</code></pre>
                 <h1 id="minimumexample">Minimum example</h1>
                 
                 <p> <code id="code-block">sparks</code> follows standard <a href="https://pytorch.org/">PyTorch</a> syntax, and scripts will often look like this:</p>
-                <pre><div class="big-code-block">
+                <div class="big-code-block">
+                    <pre><code id="code">
 train_dl = MyTrainDataLoader()
 test_dl = MyTrainDataLoader()
 encoding_network = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # number of neurons in the recording(s)
