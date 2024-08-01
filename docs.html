@@ -89,7 +89,7 @@
             
                 <h2>About this App</h2>
                 
-                <p id="technology"> SPARKS is built in python (v >= 3.9). using Pytorch. We provide high-level training/testing function to get quickly started, and users that are already familiar with Pytorch should be able to easily make full use of SPARKS. </p>
+                <p id="technology"> SPARKS is built in python (v >= 3.9). using Pytorch. We provide high-level training/testing function to get quickly started, and users that are already familiar with Pytorch should be able to easily make full use of SPARKS. The following instructions were tested on a Linux server (Rocky Linux 8.7 Green Obsidian) with CUDA 12.2 and MacOS (Sonoma 14.5 with Apple M2 Max).</p>
 
                 
         <div class="divider" style="width:24%; margin:30px 0;"></div>
@@ -98,8 +98,9 @@
 
                 <h2>Installation</h2>
                 
-                <p>SPARKS can be installed via <code id="code-block">pip</code> by using <code id="code-block">pip install sparks</code>.</p>
+                <p>SPARKS can be installed via <code id="code-block">pip</code> or <code id="code-block">conda</code>.</p>
                 
+                <h3> Installation with pip </h3>
                    <ol>
                     <li>
                      The first thing you need to do to install this app.
@@ -116,7 +117,23 @@
                 </ol>
                 
 
-                <p id="installingapp"><b>Important:</b> This line is for an important information.</p>
+                <h3> Installation with pip </h3>
+                   <ol>
+                    <li>
+                     The first thing you need to do to install this app.
+                    </li>
+                    <br>
+                    <li>
+                    The second thing you need to do to install this app.
+                    </li>
+                    <br id="openingapp">
+                    <li>
+                     The app is installed now.
+                    </li>
+                    <br>
+                </ol>
+
+                <p id="installingapp"><b>Important:</b> By default, <code>sparks</code> is installed without the dependencies required to run scripts using the <code>monkey-reaching</code> and <code>allen</code> datasets. To install the library with all dependencies, please run <code> pip install sparks[scripts]</code>. However, due to compatibility issues with the <code>allen_sdk</code> library, we recommend installing it first from this <a href="https://allensdk.readthedocs.io">link</a>.</p>
 
                 <h2>Opening the app</h2>
                 
