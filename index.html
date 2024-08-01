@@ -196,6 +196,37 @@
 
 
 
+<section class="section" id="Overview">
+<h2 class="title">Overview</h2>
+<div class="container" style="width: 80%; margin-bottom: 20px;">
+<img width="80%" src="static/images/sparks-overview.png" alt="Image description">
+</div>
+
+ To obtain consistent latent embeddings that capture most of the variance from high dimensional neuronal responses, we have developed a Sequential Predictive Autoencoder for the Representation of Spiking Signals (SPARKS), combining a variational autoencoder with the proposed Hebbian attention layer and predictive learning rule (see details below). The encoder comprises several attention blocks, each composed of an attention layer, followed by a fully connected feedforward network with residual connections and batch normalisation. The first attention block implements our Hebbian self-attention mechanism, with the following blocks implementing conventional dot-product attention. The decoder is a fully connected feedforward neural network, tasked to reconstruct either the input signal to perform unsupervised learning, or to predict a desired reference signal for supervised learning. 
+</section>
+
+
+<section class="section" id="Hebbian">
+<h2 class="title">The Hebbian Attention layer</h2>
+<div class="container" style="width: 80%; margin-bottom: 20px;">
+<img width="80%" src="static/images/encoder.png" alt="Image description">
+</div>
+
+At the heart of SPARKS is the Hebbian attention layer, a biologically motivated adaptation of the conventional attention mechanism used in Transformers. This layer allows the model to focus on significant parts of the neural input data, mimicking the way biological systems prioritize certain signals. The attention mechanism's design is grounded in the principles of sparse distributed memory, aligning closely with how biological neural networks might operate.
+</section>
+
+<section class="section" id="Learning">
+<h2 class="title">Learning and Optimization</h2>
+<div class="container" style="width: 80%; margin-bottom: 20px;">
+<img width="80%" src="static/images/optimisation.png" alt="Image description">
+</div>
+
+SPARKS utilizes a variational approach to optimize the encoder and decoder networks. By adopting a predictive causally conditioned distribution, inspired by predictive coding theories in neuroscience, the model learns to generate accurate predictions from neural data. This framework also supports training across different sessions and even different animals, allowing for robust learning despite variability in data collection conditions.
+</section>
+
+
+<section class="section" id="Applications">
+<h2 class="title">Applications and Insights</h2>
 <div class="container">
   <div style="display: inline-block; width: 45%; margin-bottom: 150px;">
     <video width="100%" autoplay loop muted preload="auto">
@@ -213,14 +244,9 @@
   </div>
 </div>
 
-<section class="section" id="Overview">
-<h2 class="title">Overview</h2>
-<div class="container" style="width: 80%; margin-bottom: 20px;">
-<img width="80%" src="static/images/sparks-overview.png" alt="Image description">
-</div>
-
- To obtain consistent latent embeddings that capture most of the variance from high dimensional neuronal responses, we have developed a Sequential Predictive Autoencoder for the Representation of Spiking Signals (SPARKS), combining a variational autoencoder with the proposed Hebbian attention layer and predictive learning rule (see details below). The encoder comprises several attention blocks, each composed of an attention layer, followed by a fully connected feedforward network with residual connections and batch normalisation. The first attention block implements our Hebbian self-attention mechanism, with the following blocks implementing conventional dot-product attention. The decoder is a fully connected feedforward neural network, tasked to reconstruct either the input signal to perform unsupervised learning, or to predict a desired reference signal for supervised learning. 
+SPARKS has been successfully applied to decode neural signals and predict sensory inputs, such as visual stimuli, with high accuracy. It demonstrates the potential to uncover the temporal dynamics of neural signals across different brain regions, offering valuable insights into brain function. Additionally, the model's ability to handle unsupervised and supervised learning tasks makes it versatile for various neuroscience research applications.
 </section>
+
 
 <!-- 
 <section class="hero is-small">
