@@ -44,6 +44,21 @@
         cursor: pointer;
       }
     </style>
+
+    <script>
+      const copyButton = document.querySelector('.copy-button');
+      const code = document.querySelector('#code');
+
+      copyButton.addEventListener('click', () => {
+        const textArea = document.createElement('textarea');
+        textArea.value = code.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Code copied to clipboard');
+      });
+    </script>
 </head>
 
 <body>
@@ -153,8 +168,12 @@
                     <br>
                     <li>
                     Create a new conda environment by running.
-                    <code id='big-code-block'> $ conda create -n cebra python==3.8
-                    $ conda activate cebra</code>
+
+                    <div class="code-block">
+                      <pre><code id="code">$ conda create -n cebra python==3.8
+                    $ conda activate cebra</code></pre>
+                      <button class="copy-button">Copy</button>
+                    </div>
                     </li>
                     <br id="openingapp">
                     <li>
