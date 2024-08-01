@@ -75,13 +75,7 @@
 
                 <div class="divider left"></div>
 
-                <a class="title" href="#basicfeatures">Basic Features</a>
-
-                <a class="section" href="#basicfeatures">Feature 1</a>
-                <a class="section" href="#basicfeatures">Feature 2</a>
-                <a class="section" href="#feature3">Feature 3</a>
-                <a class="section" href="#feature3">Feature 4</a>
-                <a class="section" href="#feature3">Feature 5</a>
+                <a class="title" href="#minimumexample">Minimum example</a>
 
                 <div class="divider left"></div>
 
@@ -197,10 +191,10 @@ $ conda activate sparks</code></pre>
                 <pre><div class="big-code-block">
 train_dl = MyTrainDataLoader()
 test_dl = MyTrainDataLoader()
-encoding_network = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # number of neurons in the recording, or a list of numbers of neurons, one for each session
+encoding_network = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # number of neurons in the recording(s)
                                              embed_dim=embed_dim,  #  attention embedding dimension
                                              latent_dim=latent_dim,  # latent dimension
-                                             tau_s_per_sess=tau_s,  # STDP decay in seconds, or a list of STDP decays, one per attention head
+                                             tau_s_per_sess=tau_s,  # STDP decay(s) in seconds, one per attention head
                                              dt_per_sess=dt,  # sampling period
                                              n_layers=n_layers,  # number of conventional attention layers
                                              n_heads=n_heads,  # number of attention heads,  
