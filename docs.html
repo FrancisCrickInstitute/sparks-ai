@@ -188,43 +188,61 @@ $ conda activate sparks</code></pre>
 
                 <p id="installingapp"><b>Important:</b> By default, <code id="code-block">sparks</code> is installed without the dependencies required to run scripts using the monkey reaching and Allen datasets (Chowdury et al., 2020, de Vries et al., 2020). To install the library with all dependencies, please run <code id="code-block"> pip install sparks[scripts]</code>. However, due to compatibility issues with the <code id="code-block">allen_sdk</code> library, we recommend installing it first from this <a href="https://allensdk.readthedocs.io">link</a>.</p>
 
-                <h2>Opening the app</h2>
-                
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                
-                 <ol>
-                    <li>
-                     The first thing you need to do to open this app.
-                    </li>
-                    <br>
-                    <li>
-                     The second thing you need to do to open this app.
-                    </li>
-                    <br>
-                    <li>
-                      The third thing you need to do to open this app.
-                    </li>
-                    <br>
-                    <li>
-                     Open the app and start using it!
-                    </li>
-                    <br>
-                </ol>
-                
-                <p id="basicfeatures">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-                    
             <div class="divider" style="width:24%; margin:30px 0;"></div>
             
             
-                <h1>Basic Features</h1>
+                <h1 id="minimumexample">Minimum example</h1>
+                
+                <p> <code id="code-block">sparks</code> follows standard <a href="https://pytorch.org/">PyTorch</a> syntax, and scripts will often look like this:</p>
+                <div class="big-code-block">
+train_dl = MyTrainDataLoader()
+test_dl = MyTrainDataLoader()
+encoding_network = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # number of neurons in the recording, or a list of numbers of neurons, one for each session
+                                             embed_dim=embed_dim,  #  attention embedding dimension
+                                             latent_dim=latent_dim,  # latent dimension
+                                             tau_s_per_sess=tau_s,  # STDP decay in seconds, or a list of STDP decays, one per attention head
+                                             dt_per_sess=dt,  # sampling period
+                                             n_layers=n_layers,  # number of conventional attention layers
+                                             n_heads=n_heads,  # number of attention heads,  
+                                             ).to(device)
+n_inputs_decoder = latent_dim * tau_p
+decoding_network = mlp(in_dim=n_inputs_decoder,
+                       hid_features=int(np.mean([n_inputs_decoder, input_size])),
+                       output_dim_per_session=input_size).to(device)
 
-                <h2>Feature 1</h2>
-                
-                <p id="basicfeatures">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                </p>
-                
+optimizer = torch.optim.Adam(list(encoding_network.parameters())
+                             + list(decoding_network.parameters()), lr=lr)
+loss_fn = torch.nn.BCEWithLogitsLoss()
+
+
+test_period = 1
+
+for epoch in tqdm.tqdm(range(args.n_epochs)):
+    train_iterator = iter(train_dl)
+    train(encoder=encoding_network,
+                   decoder=decoding_network,
+                   train_dls=[train_dl],
+                   loss_fn=loss_fn,
+                   optimizer=optimizer,
+                   latent_dim=latent_dim,
+                   tau_p=tau_p,  # past time-steps window
+                   tau_f=tau_f,  # future time-steps window
+                   beta=beta,  # KLD regularisation strength
+                   device=device)
+
+    if (epoch + 1) % test_period == 0:
+        test_loss, encoder_outputs, decoder_outputs = test(encoding_network,
+                                                           decoding_network,
+                                                           test_dl,
+                                                           latent_dim=latent_dim,
+                                                           tau_p=tau_p,
+                                                           tau_f=tau_f,
+                                                           loss_fn=loss_fn,
+                                                           device=device,)</code></pre>
+                      <button class="copy-button">Copy</button>
+                    </div>
+                    <script src="script.js"></script>
+
                 <h2>Feature 2</h2>
                 
                 <p>
