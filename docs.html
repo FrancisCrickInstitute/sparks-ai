@@ -28,8 +28,8 @@
       .big-code-block {
         background-color: #333;
         color: #fff;
-        padding: 10px;
-        border-radius: 10px;
+        padding: 5px;
+        border-radius: 5px;
         position: relative;
       }
       .copy-button {
@@ -45,20 +45,6 @@
       }
     </style>
 
-    <script>
-      const copyButton = document.querySelector('.copy-button');
-      const code = document.querySelector('#code');
-
-      copyButton.addEventListener('click', () => {
-        const textArea = document.createElement('textarea');
-        textArea.value = code.textContent;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        alert('Code copied to clipboard');
-      });
-    </script>
 </head>
 
 <body>
@@ -169,11 +155,12 @@
                     <li>
                     Create a new conda environment by running.
 
-                    <div class="code-block">
+                    <div class="big-code-block">
                       <pre><code id="code">$ conda create -n cebra python==3.8
                     $ conda activate cebra</code></pre>
                       <button class="copy-button">Copy</button>
                     </div>
+                    <script src="script.js"></script>
                     </li>
                     <br id="openingapp">
                     <li>
