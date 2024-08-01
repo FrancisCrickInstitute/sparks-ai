@@ -194,7 +194,7 @@ $ conda activate sparks</code></pre>
                 <h1 id="minimumexample">Minimum example</h1>
                 
                 <p> <code id="code-block">sparks</code> follows standard <a href="https://pytorch.org/">PyTorch</a> syntax, and scripts will often look like this:</p>
-                <div class="big-code-block">
+                <pre><div class="big-code-block">
 train_dl = MyTrainDataLoader()
 test_dl = MyTrainDataLoader()
 encoding_network = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # number of neurons in the recording, or a list of numbers of neurons, one for each session
