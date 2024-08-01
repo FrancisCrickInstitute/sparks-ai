@@ -161,14 +161,23 @@ $ conda activate sparks</code></pre>
                     </div>
                     <script src="script.js"></script>
                     </li>
+                    <li>
+                     Depending on your systems requirements, you may want to install Pytorch manually, for instance to install the correct CUDA version (please see more details <a href="https://pytorch.org/get-started/locally/">here</a>) .
+                    </li>
                     <br id="openingapp">
                     <li>
-                     The app is installed now.
+                     Install using conda: 
+                     <div class="big-code-block">
+                      <pre><code id="code">$ conda install sparks</code></pre>
+                      <button class="copy-button">Copy</button>
+                    </div>
+                    <script src="script.js"></script>
+
                     </li>
                     <br>
                 </ol>
 
-                <p id="installingapp"><b>Important:</b> By default, <code id="code-block">sparks</code> is installed without the dependencies required to run scripts using the <code id="code-block">monkey-reaching</code> and <code id="code-block">allen</code> datasets. To install the library with all dependencies, please run <code id="code-block"> pip install sparks[scripts]</code>. However, due to compatibility issues with the <code id="code-block">allen_sdk</code> library, we recommend installing it first from this <a href="https://allensdk.readthedocs.io">link</a>.</p>
+                <p id="installingapp"><b>Important:</b> By default, <code id="code-block">sparks</code> is installed without the dependencies required to run scripts using the monkey reaching and Allen datasets (Chowdury et al., 2020, de Vries et al., 2020). To install the library with all dependencies, please run <code id="code-block"> pip install sparks[scripts]</code>. However, due to compatibility issues with the <code id="code-block">allen_sdk</code> library, we recommend installing it first from this <a href="https://allensdk.readthedocs.io">link</a>.</p>
 
                 <h2>Opening the app</h2>
                 
