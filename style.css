@@ -376,12 +376,4 @@ a:hover {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {}
 
-
-<style>
-  #code-block {
-    background-color: #333; /* This is a dark gray color. You can use any color you prefer. */
-    color: #fff; /* This is a white color for the text. You can use any color you prefer. */
-    padding: 10px; /* This adds some padding around the text. You can adjust this value as needed. */
-  }
-</style>
 /* End Break Points */
