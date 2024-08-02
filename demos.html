@@ -45,6 +45,35 @@
       }
     </style>
 
+    <style>
+        .download-button {
+          background-color: #4CAF50; /* Green */
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+
+        .download-button:hover {
+          background-color: #45a049; /* Darker green */
+        }
+
+        .download-button:active {
+          background-color: #3e8e41; /* Even darker green */
+        }
+
+        .download-button img {
+          vertical-align: middle;
+          margin-right: 5px;
+          width: 20px;
+          height: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -87,7 +116,7 @@
 
                 <h1 >Demos</h1>
                 
-                <p> In this page, we provide several notebooks to get started with <code id="code-block">sparks</code>. </p> 
+                <p> In this page, we provide several notebooks to get started with <code id="code-block">sparks</code>. Note that to run them, you do need to install Jupyter, which is not included in the base version of <code id="code-block">sparks</code>.</p> 
             
                 
         <div class="divider" style="width:24%; margin:30px 0;"></div>
@@ -95,6 +124,13 @@
                 <h1 id="mecdemo">Oscillations in the medial entorhinal cortex (MEC)</h1>
             </a>
                 <p>In this notebook, we use SPARKS to uncover oscillations from data recorded in the MEC.</p>
+                
+                <a download="https://franciscrickinstitute.github.io/sparks-ai/demo_mec#" href="https://franciscrickinstitute.github.io/sparks-ai/demo_mec#">
+                  <button class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download Notebook
+                  </button>
+                </a>
                 
                 <a href="https://franciscrickinstitute.github.io/sparks-ai/demo_mec#" target="_blank">
                 <div class="container">
