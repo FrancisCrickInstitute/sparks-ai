@@ -204,7 +204,6 @@ optimizer = torch.optim.Adam(list(encoding_network.parameters())
 loss_fn = torch.nn.BCEWithLogitsLoss()
 
 for epoch in tqdm.tqdm(range(args.n_epochs)):
-    train_iterator = iter(train_dl)
     train(encoder=encoding_network,
                    decoder=decoding_network,
                    train_dls=[train_dl],
@@ -251,14 +250,14 @@ my_ephys_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # nu
 
 
 my_ca_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # number of neurons in the recording(s)
-                                             embed_dim=embed_dim,  #  attention embedding dimension
-                                             latent_dim=latent_dim,  # latent dimension
-                                             tau_s_per_sess=tau_s,  # STDP decay(s) in seconds, one per attention head
-                                             dt_per_sess=dt,  # sampling period
-                                             n_layers=n_layers,  # number of conventional attention layers
-                                             n_heads=n_heads,  # number of attention heads,
-                                             data_type='ca'  
-                                             ).to(device)
+                                          embed_dim=embed_dim,  #  attention embedding dimension
+                                          latent_dim=latent_dim,  # latent dimension
+                                          tau_s_per_sess=tau_s,  # STDP decay(s) in seconds, one per attention head
+                                          dt_per_sess=dt,  # sampling period
+                                          n_layers=n_layers,  # number of conventional attention layers
+                                          n_heads=n_heads,  # number of attention heads,
+                                          data_type='ca'  
+                                          ).to(device)
 </code></pre>
                     <button class="copy-button">Copy</button>
                     </div>
@@ -269,13 +268,13 @@ my_ca_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # numbe
                 
                 <p>The <code id="code-block">train</code> and <code id="code-block">test</code> functions rely on the user to provide a list of PyTorch <code id="code-block">Dataloaders</code>, one for each session to train/test on.</p>
 
-                <p>In the underlying Pytorch <code id="code-block">Dataset</code> (or any iterable), examples should be formatted with shape <code id="code-block">NxT</code> for the neural signals and <code id="code-block">CxHxWx...xT</code> for targets during supervised learning, with <code id="code-block">N</code> the number of neurons, <code id="code-block">T</code> the number of time-steps, <code id="code-block">CxHxWx...</code> the arbitrary dimensions of the target signal.</p>
+                <p>In the underlying Pytorch <code id="code-block">Dataset</code> (or any iterable), examples should be formatted with shape <code id="code-block">NxT</code> for the neural signals and <code id="code-block">CxHxWx...xT</code> for targets during supervised learning, with <code id="code-block">N</code> the number of neurons, <code id="code-block">T</code> the number of time-steps, and <code id="code-block">CxHxWx...</code> the arbitrary dimensions of the target signal.</p>
 
                 <div class="divider" style="width:24%; margin:30px 0;"></div>
                 
                 <h1 id= "training">Training</h1>
 
-                <h2 id= "online">Online training</h2>
+                <h2 id= "training">Online training</h2>
 
                 <p>Training relies on backpropagation-through-time (BPTT), for which memory requirements scale quadratically with the number of time-steps.</p>
 
@@ -317,18 +316,19 @@ my_ca_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # numbe
 
     print(encoding_network.id_per_sess) # outputs [0, 1, 2]
 
-    # the training function will automatically assign ids [0, 1, 2] to each session and resolve them against those saved by the model at runtime
-    train(encoder=encoding_network,
-                   decoder=decoding_network,
-                   train_dls=train_dls,
-                   loss_fn=loss_fn,
-                   optimizer=optimizer,
-                   latent_dim=latent_dim,
-                   tau_p=tau_p,  # past time-steps window
-                   tau_f=tau_f,  # future time-steps window
-                   beta=beta,  # KLD regularisation strength
-                   online=True,  # False by default
-                   device=device) </code></pre>
+    # the training function will automatically assign ids [0, 1, 2] to each session and resolve them
+    # against those saved by the model at runtime
+    test(encoder=encoding_network,
+         decoder=decoding_network,
+         test_dls=train_dls,
+         loss_fn=loss_fn,
+         optimizer=optimizer,
+         latent_dim=latent_dim,
+         tau_p=tau_p,  # past time-steps window
+         tau_f=tau_f,  # future time-steps window
+         beta=beta,  # KLD regularisation strength
+         online=True,  # False by default
+         device=device) </code></pre>
                     <button class="copy-button">Copy</button>
                     </div>
                     <script src="script.js"></script>
@@ -367,9 +367,11 @@ my_ca_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # numbe
                     </div>
                     <script src="script.js"></script>
 
+                <div class="divider" style="width:24%; margin:30px 0;"></div>
+
                 <h1 id= "comingsoon">Coming soon!</h1>
 
-                <p>Sparse attention for scaling up the number of neurons!</p>
+                <p>Sparse attention for scaling up the number of neurons.</p>
 
                 <div class="divider" style="width:24%; margin:30px 0;"></div>
                 
