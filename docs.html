@@ -78,22 +78,17 @@
 
                 <div class="divider left"></div>
 
-                <a class="title" href="#advanced">Advanced Features</a>
+                <a class="title" href="#data">Data</a>
 
-                <a class="section" href="#advanced">Feature A</a>
-                <a class="section" href="#featureb">Feature B</a>
-                <a class="section" href="#featurec">Feature C</a>
-                <a class="sub-section" href="#featurec1">Feature C.1</a>
-                <a class="sub-section" href="#featurec2">Feature C.2</a>
-                <a class="section" href="#featured">Feature D</a>
+                <a class="section" href="#data">Support</a>
+                <a class="section" href="#dataprocessing">Processing</a>
+                <div class="divider left"></div>
+
+                <a class="title" href="#training">Training</a>
 
                 <div class="divider left"></div>
 
-                <a class="title" href="#accesibility">Accesibility</a>
-
-                <div class="divider left"></div>
-
-                <a class="title" href="#moreinfo">More Info</a>
+                <a class="title" href="#comingsoon">Coming soon!</a>
             
              <div class="space double"></div>
 
@@ -188,7 +183,7 @@ $ conda activate sparks</code></pre>
                 <p> <code id="code-block">sparks</code> follows standard <a href="https://pytorch.org/">PyTorch</a> syntax, and scripts will often look like this:</p>
                 <div class="big-code-block">
                     <pre><code id="code">
-train_dl = MyTrainDataLoader()
+train_dl = MyTrainDataLoader()  # the train/test functions expect a list of dls, one for each session
 test_dl = MyTrainDataLoader()
 encoding_network = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # number of neurons in the recording(s)
                                              embed_dim=embed_dim,  #  attention embedding dimension
@@ -232,10 +227,10 @@ for epoch in tqdm.tqdm(range(args.n_epochs)):
                     </div>
                     <script src="script.js"></script>
 
-                
+
                 <div class="divider" style="width:24%; margin:30px 0;"></div>
                 
-                <h1>Data</h1>
+                <h1 id= "data">Data</h1>
 
                 <h2>Support</h2>
 
@@ -267,82 +262,44 @@ my_ca_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # numbe
                     </div>
                     <script src="script.js"></script>
 
-                   
-                
-                <h2>Processing</h2>
+
+                <h2 id= "dataprocessing">Processing</h2>
                 
                 <p>The <code id="code-block">train</code> and <code id="code-block">test</code> functions rely on the user to provide a list of PyTorch <code id="code-block">Dataloaders</code>, one for each session to train/test on.</p>
-                
 
-                <p>Examples should be formatted in the <code id="code-block">NxT</code> for the neural signals and <code id="code-block">CxHxWx...xT</code> for targets during supervised learning, with <code id="code-block">N</code> the number of neurons, <code id="code-block">T</code> the number of time-steps, <code id="code-block">CxHxWx...</code> the arbitrary dimensions of the target signal.</p>
+                <p>In the underlying Pytorch <code id="code-block">Dataset</code> (or any iterable), examples should be formatted with shape <code id="code-block">NxT</code> for the neural signals and <code id="code-block">CxHxWx...xT</code> for targets during supervised learning, with <code id="code-block">N</code> the number of neurons, <code id="code-block">T</code> the number of time-steps, <code id="code-block">CxHxWx...</code> the arbitrary dimensions of the target signal.</p>
 
-                <h2>Feature C</h2>
-                  
-                <p id="featurec1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  
-                 
-                <h2>Feature C.1</h2>
-
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit:
-                </p>
-                
-                   <ul>
-                    <li>
-                    <b>Point 1</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    <br>
-                    <li>
-                    <b>Point 2</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-                    </li>
-                    <br id="featurec2">
-                     <li>
-                    <b>Point 3</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    <br>
-                </ul>
-                   
-                 <h2>Feauture C.2</h2>
-                   
-                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    <br>
-                    <br>
-                     <b>Important:</b> Please notice that lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    <br>
-                    <br>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                 </p>
-                  
-                  
-                  <h2>Feature D</h2>
-                  
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  <br>
-                  <br id="accesibility">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  
-                  
                 <div class="divider" style="width:24%; margin:30px 0;"></div>
-                   
-                   <h1>Accessibility</h1>
-                   
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                   <br>
-                   <br>
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                   <br>
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                   
-                   <p>Lorem ipsum dolor sit amet.
-                      <br id="moreinfo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                   
+                
+                <h1 id= "training">Training</h1>
+
+                <p>Training relies on backpropagation-through-time (BPTT), for which memory requirements scale quadratically with the number of time-steps.</p>
+
+                <p>To allow training on long examples, we support an online version of the algorithm that ignores the dependency of the current encoder state on previous time-steps, and has fixed complexity w.r.t. the number of time-steps. This can be used by using the <code id="code-block">online</code> argument of the  <code id="code-block">train</code> function:</p>
+
+                <div class="big-code-block">
+                    <pre><code id="code">
+    train(encoder=encoding_network,
+                   decoder=decoding_network,
+                   train_dls=[train_dl],
+                   loss_fn=loss_fn,
+                   optimizer=optimizer,
+                   latent_dim=latent_dim,
+                   tau_p=tau_p,  # past time-steps window
+                   tau_f=tau_f,  # future time-steps window
+                   beta=beta,  # KLD regularisation strength
+                   online=True,  # False by default
+                   device=device) </code></pre>
+                    <button class="copy-button">Copy</button>
+                    </div>
+                    <script src="script.js"></script>
+
                 <div class="divider" style="width:24%; margin:30px 0;"></div>
+                
+                <h1 id= "comingsoon">Coming soon!</h1>
 
-                <h1>More Info</h1>
+                <p>Sparse attention for scaling up the number of neurons!</p>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.marks are protected by intellectual property rights.</p>
-
-                <div class="doublespace"></div>
                 <div class="divider" style="width:24%; margin:30px 0;"></div>
                 
 
