@@ -85,6 +85,7 @@
                 <div class="divider left"></div>
 
                 <a class="title" href="#training">Training</a>
+                <a class="section" href="#multisession">Multi-session training</a>
 
                 <div class="divider left"></div>
 
@@ -276,7 +277,6 @@ my_ca_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # numbe
                 <p>Training relies on backpropagation-through-time (BPTT), for which memory requirements scale quadratically with the number of time-steps.</p>
 
                 <p>To allow training on long examples, we support an online version of the algorithm that ignores the dependency of the current encoder state on previous time-steps, and has fixed complexity w.r.t. the number of time-steps. This can be used by using the <code id="code-block">online</code> argument of the  <code id="code-block">train</code> function:</p>
-
                 <div class="big-code-block">
                     <pre><code id="code">
     train(encoder=encoding_network,
@@ -295,7 +295,78 @@ my_ca_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # numbe
                     <script src="script.js"></script>
 
                 <div class="divider" style="width:24%; margin:30px 0;"></div>
-                
+
+                <h2 id= "multisession">Multi session training</h2>
+                <p>When training on multiple sessions, SPARKS trains one Hebbian attention layer per session. To resolve the correct layer at runtime, each is assigned a unique id, which are by default zero-indexed:</p>
+                    <div class="big-code-block">
+                    <pre><code id="code">
+
+    train_dls = [MyTrainDl(session) for session in [session_1, session_2, session_3]]
+    sessions_ids = [111, 222, 333]
+    n_neurons_per_sess = [10, 20, 30]
+
+    encoding_network = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # number of neurons in the recording(s)
+                                                 embed_dim=embed_dim,  #  attention embedding dimension
+                                                 latent_dim=latent_dim,  # latent dimension
+                                                 tau_s_per_sess=tau_s,  # STDP decay(s) in seconds, one per attention head
+                                                 dt_per_sess=dt,  # sampling period
+                                                 n_layers=n_layers,  # number of conventional attention layers
+                                                 n_heads=n_heads,  # number of attention heads,
+                                                 ).to(device)
+
+    print(encoding_network.id_per_sess) # outputs [0, 1, 2]
+
+    # the training function will automatically assign ids [0, 1, 2] to each session and resolve them against those saved by the model at runtime
+    train(encoder=encoding_network,
+                   decoder=decoding_network,
+                   train_dls=train_dls,
+                   loss_fn=loss_fn,
+                   optimizer=optimizer,
+                   latent_dim=latent_dim,
+                   tau_p=tau_p,  # past time-steps window
+                   tau_f=tau_f,  # future time-steps window
+                   beta=beta,  # KLD regularisation strength
+                   online=True,  # False by default
+                   device=device) </code></pre>
+                    <button class="copy-button">Copy</button>
+                    </div>
+                    <script src="script.js"></script>
+
+    <p>You can also define custom ids for your sessions, and pass them to the test or train function:</p>
+                <div class="big-code-block">
+                    <pre><code id="code">
+
+    test_dls = [MyTestDl(session) for session in [session_1, session_2, session_3]]
+    sessions_ids = [111, 222, 333]
+
+
+    encoding_network = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # number of neurons in the recording(s)
+                                                 embed_dim=embed_dim,  #  attention embedding dimension
+                                                 latent_dim=latent_dim,  # latent dimension
+                                                 tau_s_per_sess=tau_s,  # STDP decay(s) in seconds, one per attention head
+                                                 dt_per_sess=dt,  # sampling period
+                                                 n_layers=n_layers,  # number of conventional attention layers
+                                                 n_heads=n_heads,  # number of attention heads
+                                                 id_per_sess=sessions_ids  
+                                                 ).to(device)
+
+    train(encoder=encoding_network,
+                   decoder=decoding_network,
+                   train_dls=[train_dl],
+                   loss_fn=loss_fn,
+                   optimizer=optimizer,
+                   latent_dim=latent_dim,
+                   tau_p=tau_p,  # past time-steps window
+                   tau_f=tau_f,  # future time-steps window
+                   beta=beta,  # KLD regularisation strength
+                   online=True,  # False by default
+                   sess_ids=sessions_ids,
+                   device=device) </code></pre>
+                    <button class="copy-button">Copy</button>
+                    </div>
+                    <script src="script.js"></script>
+
+
                 <h1 id= "comingsoon">Coming soon!</h1>
 
                 <p>Sparse attention for scaling up the number of neurons!</p>
