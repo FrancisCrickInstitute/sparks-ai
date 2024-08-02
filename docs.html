@@ -60,6 +60,7 @@
         <div class="row wrapper">
 
             <div class="sidepanel">
+                 <img width="60%" src="static/images/logo_2.png" alt="Image description">
 
                 <a class="title" href="#">Introduction</a>
                 
@@ -282,16 +283,16 @@ my_ca_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # numbe
                 <div class="big-code-block">
                     <pre><code id="code">
     train(encoder=encoding_network,
-                   decoder=decoding_network,
-                   train_dls=[train_dl],
-                   loss_fn=loss_fn,
-                   optimizer=optimizer,
-                   latent_dim=latent_dim,
-                   tau_p=tau_p,  # past time-steps window
-                   tau_f=tau_f,  # future time-steps window
-                   beta=beta,  # KLD regularisation strength
-                   online=True,  # False by default
-                   device=device) </code></pre>
+          decoder=decoding_network,
+          train_dls=[train_dl],
+          loss_fn=loss_fn,
+          optimizer=optimizer,
+          latent_dim=latent_dim,
+          tau_p=tau_p,  # past time-steps window
+          tau_f=tau_f,  # future time-steps window
+          beta=beta,  # KLD regularisation strength
+          online=True,  # False by default
+          device=device) </code></pre>
                     <button class="copy-button">Copy</button>
                     </div>
                     <script src="script.js"></script>
