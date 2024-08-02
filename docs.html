@@ -85,6 +85,7 @@
                 <div class="divider left"></div>
 
                 <a class="title" href="#training">Training</a>
+                <a class="section" href="#online">Online training</a>
                 <a class="section" href="#multisession">Multi-session training</a>
 
                 <div class="divider left"></div>
@@ -274,6 +275,8 @@ my_ca_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # numbe
                 
                 <h1 id= "training">Training</h1>
 
+                <h2 id= "online">Online training</h2>
+
                 <p>Training relies on backpropagation-through-time (BPTT), for which memory requirements scale quadratically with the number of time-steps.</p>
 
                 <p>To allow training on long examples, we support an online version of the algorithm that ignores the dependency of the current encoder state on previous time-steps, and has fixed complexity w.r.t. the number of time-steps. This can be used by using the <code id="code-block">online</code> argument of the  <code id="code-block">train</code> function:</p>
@@ -293,8 +296,6 @@ my_ca_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # numbe
                     <button class="copy-button">Copy</button>
                     </div>
                     <script src="script.js"></script>
-
-                <div class="divider" style="width:24%; margin:30px 0;"></div>
 
                 <h2 id= "multisession">Multi session training</h2>
                 <p>When training on multiple sessions, SPARKS trains one Hebbian attention layer per session. To resolve the correct layer at runtime, each is assigned a unique id, which are by default zero-indexed:</p>
@@ -365,7 +366,6 @@ my_ca_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # numbe
                     <button class="copy-button">Copy</button>
                     </div>
                     <script src="script.js"></script>
-
 
                 <h1 id= "comingsoon">Coming soon!</h1>
 
