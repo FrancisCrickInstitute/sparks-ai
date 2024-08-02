@@ -63,7 +63,7 @@
 
                 <a class="title" href="#">Introduction</a>
                 
-                <a class="section" href="#">About this App</a>
+                <a class="section" href="#">About this library</a>
 
                 <div class="divider left"></div>
 
@@ -109,8 +109,7 @@
                 
                 <p> This is the official documentation for SPARKS, a Sequential Predictive Autoencoder for the Representation of Spiking Signals. SPARKS combines a variational autoencoder with a novel Hebbian attention layer and predictive learning rule to obtain consistent latent embeddings that capture most of the variance from high dimensional neuronal responses. </p> 
             
-                <h2>About this App</h2>
-                
+                <h2>About this library</h2>
                 <p id="technology"> SPARKS is built in python (v >= 3.9). using Pytorch. We provide high-level training/testing function to get quickly started, and users that are already familiar with Pytorch should be able to easily make full use of SPARKS. The following instructions were tested on a Linux server (Rocky Linux 8.7 Green Obsidian) with CUDA 12.2 and MacOS (Sonoma 14.5 with Apple M2 Max).</p>
 
                 
@@ -149,7 +148,7 @@
                 </ol>
                 
 
-                <h3 id= "condainstall"> Installation with conda</h3>
+                <h3 id= "condainstall"> Installation with conda (recommended)</h3>
                    <ol>
                     <li>
                      Install Anaconda or Miniconda (please see more details <a href="https://docs.anaconda.com/anaconda/install/">here</a>).
@@ -201,15 +200,11 @@ encoding_network = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # nu
                                              ).to(device)
 n_inputs_decoder = latent_dim * tau_p
 decoding_network = mlp(in_dim=n_inputs_decoder,
-                       hid_features=int(np.mean([n_inputs_decoder, input_size])),
                        output_dim_per_session=input_size).to(device)
 
 optimizer = torch.optim.Adam(list(encoding_network.parameters())
                              + list(decoding_network.parameters()), lr=lr)
 loss_fn = torch.nn.BCEWithLogitsLoss()
-
-
-test_period = 1
 
 for epoch in tqdm.tqdm(range(args.n_epochs)):
     train_iterator = iter(train_dl)
@@ -237,86 +232,50 @@ for epoch in tqdm.tqdm(range(args.n_epochs)):
                     </div>
                     <script src="script.js"></script>
 
-                <h2>Feature 2</h2>
-                
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                <br><br>
-                <b>Explanation 1</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                <br>
-                <br>
-                <b>Explanation 2</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                <br>
-                <br>
-                <b>Explanation 3</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                <br>
-                <br id="feature3">
-                <b>Explanation 4</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-                
-                <h2>Feature 3</h2>
-                
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                <br id="feature4">
-             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-                
-                <h2>Feature 4</h2>
-                
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  <br>
-                  <br>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                 <br>
-                 <br id="feature5">
-                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                
-                
-                <h2>Feature 5</h2>
-                
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                <br>
-                <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                <br>
-                </p>
-                
-        
-                
-               <h2>Feature 5</h2>
-                 
-               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                <br id="advanced">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
                 
                 <div class="divider" style="width:24%; margin:30px 0;"></div>
                 
-                <h1>Advanced Features</h1>
-                
-                <h2>Feature A</h2>
-                
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                <br>
-                <br id="featureb">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h1>Data</h1>
+
+                <h2>Support</h2>
+
+                <p><code id="code-block">sparks</code> supports both electrophysiology and calcium imaging data. Make sure to select the correct data type with the <code id="code-block">data_type</code> argument during the encoder initialisation:</p>
+                <div class="big-code-block">
+                    <pre><code id="code">
+my_ephys_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # number of neurons in the recording(s)
+                                             embed_dim=embed_dim,  #  attention embedding dimension
+                                             latent_dim=latent_dim,  # latent dimension
+                                             tau_s_per_sess=tau_s,  # STDP decay(s) in seconds, one per attention head
+                                             dt_per_sess=dt,  # sampling period
+                                             n_layers=n_layers,  # number of conventional attention layers
+                                             n_heads=n_heads,  # number of attention heads,
+                                             data_type='ephys'  # by default  
+                                             ).to(device)
+
+
+my_ca_encoder = HebbianTransformerEncoder(n_neurons_per_sess=n_neurons,  # number of neurons in the recording(s)
+                                             embed_dim=embed_dim,  #  attention embedding dimension
+                                             latent_dim=latent_dim,  # latent dimension
+                                             tau_s_per_sess=tau_s,  # STDP decay(s) in seconds, one per attention head
+                                             dt_per_sess=dt,  # sampling period
+                                             n_layers=n_layers,  # number of conventional attention layers
+                                             n_heads=n_heads,  # number of attention heads,
+                                             data_type='ca'  
+                                             ).to(device)
+</code></pre>
+                    <button class="copy-button">Copy</button>
+                    </div>
+                    <script src="script.js"></script>
+
                    
                 
-                <h2>Feature B</h2>
+                <h2>Processing</h2>
                 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                <br>
-                <br id="featurec">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>The <code id="code-block">train</code> and <code id="code-block">test</code> functions rely on the user to provide a list of PyTorch <code id="code-block">Dataloaders</code>, one for each session to train/test on.</p>
                 
-                
+
+                <p>Examples should be formatted in the <code id="code-block">NxT</code> for the neural signals and <code id="code-block">CxHxWx...xT</code> for targets during supervised learning, with <code id="code-block">N</code> the number of neurons, <code id="code-block">T</code> the number of time-steps, <code id="code-block">CxHxWx...</code> the arbitrary dimensions of the target signal.</p>
+
                 <h2>Feature C</h2>
                   
                 <p id="featurec1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
